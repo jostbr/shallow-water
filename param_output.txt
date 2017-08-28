@@ -1,0 +1,21 @@
+
+================================================================
+use_coriolis = True
+use_beta = True
+use_friction = False
+use_wind = False
+use_source = False
+use_sink = False
+g = 9.81
+H = 100
+dx = 6711.41 km
+dy = 6711.41 km
+dt = 21.43 s
+f_0 = 0.0001
+Max alpha = 0.00235707
+
+Rossby radius: 313.2 km
+Rossby number: 0.313209
+Long Rossby wave speed: 1.962 m/s
+Long Rossby transit time: 5.90 days
+================================================================
