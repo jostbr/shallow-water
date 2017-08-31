@@ -7,7 +7,7 @@ set of eqations:
 
     du/dt - fv = -g*d(eta)/dx + tau_x/(rho_0*H)- kappa*u
     dv/dt + fu = -g*d(eta)/dy + tau_y/(rho_0*H)- kappa*v
-    d(eta)/dt + d((eta + H)*u)/dx + d((eta + H)*u)/dx = sigma - w
+    d(eta)/dt + d((eta + H)*u)/dx + d((eta + H)*u)/dy = sigma - w
 
 where f = f_0 + beta*y can be the full latitude varying coriolis parameter.
 For the momentum equations, an ordinary forward-in-time centered-in-space
