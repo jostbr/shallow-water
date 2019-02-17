@@ -1,7 +1,7 @@
 # Shallow water equations
 Model solving the 2D [shallow water equations](https://en.wikipedia.org/wiki/Shallow_water_equations). In particular, the momentum equations are linearized while the continuity equation is solved non-linearly. The model was developed as part of the ["Bornö Summer School in Ocean Dynamics"](https://chess.w.uib.no/event/borno-summer-school-practice/) and in order to study geophysical fluid dynamics theory evolve in a numerical simulation.
 
-As it is set up right now, the model initates with a large gaussian bump resulting in waves propagate away from the bump, then interacts with the walls (no flow condition). The solution for the surface elevation and velocity fields can be seen below
+As it is set up right now, the model initates with a large gaussian bump resulting in waves propagate away from the bump, then interacts with the walls (no flow condition). The solution for the surface elevation and velocity fields can be seen below:
 
 <div class="nav3" style="height:705px;">
     <img src="surface.gif" alt="Surface elevation solution" width="47%"></a>
