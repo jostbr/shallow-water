@@ -8,7 +8,7 @@ from matplotlib import animation
 from mpl_toolkits.mplot3d import Axes3D
 import fourier_transform as ft
 
-plt.style.use("seaborn")
+#plt.style.use("seaborn")
 
 def eta_animation(X, Y, eta_list, frame_interval, filename):
     """Function that takes in the domain x, y (2D meshgrids) and a list of 2D arrays
@@ -42,27 +42,29 @@ def velocity_animation(X, Y, u_list, v_list, frame_interval, filename):
     u_list, v_list and creates an quiver animation of the velocity field (u, v). To get
     updating title one also need specify time step dt between each frame in the simulation,
     the number of time steps between each eta in eta_list and finally, a filename for video."""
-    fig, ax = plt.subplots(1, 1)
-    plt.title("Velocity field $\mathbf{u}(x,y)$ after 0.0 days", fontname = "serif", fontsize = 17)
-    plt.xlabel("x [m]", fontname = "serif", fontsize = 12)
-    plt.ylabel("y [m]", fontname = "serif", fontsize = 12)
-    Q = ax.quiver(X[::4, ::4], Y[::4, ::4], u_list[0][::4,::4], v_list[0][::4,::4],
+    fig, ax = plt.subplots(figsize = (8, 8))
+    plt.title("Velocity field $\mathbf{u}(x,y)$ after 0.0 days", fontname = "serif", fontsize = 19)
+    plt.xlabel("x [km]", fontname = "serif", fontsize = 16)
+    plt.ylabel("y [km]", fontname = "serif", fontsize = 16)
+    q_int = 3
+    Q = ax.quiver(X[::q_int, ::q_int]/1000.0, Y[::q_int, ::q_int]/1000.0, u_list[0][::q_int,::q_int], v_list[0][::q_int,::q_int],
         scale=0.2, scale_units='inches')
-    qk = plt.quiverkey(Q, 0.9, 0.9, 0.001, "0.1 m/s", labelpos = "E", coordinates = "figure")
+    #qk = plt.quiverkey(Q, 0.9, 0.9, 0.001, "0.1 m/s", labelpos = "E", coordinates = "figure")
 
     # Update function for quiver animation.
     def update_quiver(num):
         u = u_list[num]
         v = v_list[num]
-        ax.set_title("Velocity field $\mathbf{{u}}(x,y)$ after t = {:.2f} hours".format(
-            num*frame_interval/3600), fontname = "serif", fontsize = 16)
-        Q.set_UVC(u[::4, ::4], v[::4, ::4])
+        ax.set_title("Velocity field $\mathbf{{u}}(x,y,t)$ after t = {:.2f} hours".format(
+            num*frame_interval/3600), fontname = "serif", fontsize = 19)
+        Q.set_UVC(u[::q_int, ::q_int], v[::q_int, ::q_int])
         return Q,
 
     anim = animation.FuncAnimation(fig, update_quiver,
         frames = len(u_list), interval = 10, blit = False)
     mpeg_writer = animation.FFMpegWriter(fps = 24, bitrate = 10000,
         codec = "libx264", extra_args = ["-pix_fmt", "yuv420p"])
+    fig.tight_layout()
     anim.save("{}.mp4".format(filename), writer = mpeg_writer)
     return anim    # Need to return anim object to see the animation
 
@@ -75,14 +77,14 @@ def eta_animation3D(X, Y, eta_list, frame_interval, filename):
     def update_surf(num):
         ax.clear()
         surf = ax.plot_surface(X/1000, Y/1000, eta_list[num], cmap = plt.cm.RdBu_r)
-        ax.set_title("Surface elevation $\eta$ after {:.2f} hours".format(
-            num*frame_interval/3600), fontname = "serif", fontsize = 17)
+        ax.set_title("Surface elevation $\eta(x,y,t)$ after $t={:.2f}$ hours".format(
+            num*frame_interval/3600), fontname = "serif", fontsize = 19, y=1.04)
         ax.set_xlabel("x [km]", fontname = "serif", fontsize = 14)
         ax.set_ylabel("y [km]", fontname = "serif", fontsize = 14)
-        ax.set_zlabel("Surface elevation [m]", fontname = "serif", fontsize = 16)
+        ax.set_zlabel("$\eta$ [m]", fontname = "serif", fontsize = 16)
         ax.set_xlim(X.min()/1000, X.max()/1000)
         ax.set_ylim(Y.min()/1000, Y.max()/1000)
-        ax.set_zlim(eta_list[0].min(), eta_list[0].max())
+        ax.set_zlim(-0.3, 0.7)
         plt.tight_layout()
         return surf,
 
