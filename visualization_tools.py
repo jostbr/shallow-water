@@ -42,7 +42,7 @@ def velocity_animation(X, Y, u_list, v_list, frame_interval, filename):
     u_list, v_list and creates an quiver animation of the velocity field (u, v). To get
     updating title one also need specify time step dt between each frame in the simulation,
     the number of time steps between each eta in eta_list and finally, a filename for video."""
-    fig, ax = plt.subplots(figsize = (8, 8))
+    fig, ax = plt.subplots(figsize = (8, 8), facecolor = "white")
     plt.title("Velocity field $\mathbf{u}(x,y)$ after 0.0 days", fontname = "serif", fontsize = 19)
     plt.xlabel("x [km]", fontname = "serif", fontsize = 16)
     plt.ylabel("y [km]", fontname = "serif", fontsize = 16)
@@ -69,7 +69,7 @@ def velocity_animation(X, Y, u_list, v_list, frame_interval, filename):
     return anim    # Need to return anim object to see the animation
 
 def eta_animation3D(X, Y, eta_list, frame_interval, filename):
-    fig = plt.figure(figsize = (10, 7))
+    fig = plt.figure(figsize = (8, 8), facecolor = "white")
     ax = fig.add_subplot(111, projection='3d')
 
     surf = ax.plot_surface(X, Y, eta_list[0], cmap = plt.cm.RdBu_r)
