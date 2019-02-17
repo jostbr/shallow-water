@@ -5,11 +5,11 @@ As it is set up right now, the model initates with a large gaussian bump resulti
 
 <div class="row">
 	<div class="column">
-		<img src="surface.gif" alt="Surface elevation solution" width="200"/>
+		<img src="surface.gif" alt="Surface elevation solution" width="50%"/>
 	</div>
 
 	<div class="column">
-		<img src="velocity.gif" alt="Velocity field solution" width="200"/>
+		<img src="velocity.gif" alt="Velocity field solution" width="50%">
 	</div>
 </div>
 
