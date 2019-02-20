@@ -1,0 +1,22 @@
+Suggested parameter setup for Kelvin wave scenario:
+====================================================
+f = 4E-4
+g = 9.81
+H = 100
+dx = 1E+4
+dy = 1E+4
+dt = 0.5*dx/np.sqrt(g*H)
+L_x = 1E+6
+L_y = 1E+6
+
+Suggested parameter setup for Rossby wave scenario:
+====================================================
+f = 1E-5
+g = 0.01
+H = 100
+dx = 5E+3
+dy = 5E+3
+dt = 0.5*dx/np.sqrt(g*H)
+L_x = 1E+6
+L_y = 1E+6
+beta = 1E-11
