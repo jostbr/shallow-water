@@ -171,7 +171,7 @@ anim_interval = 20                                         # How often to sample
 sample_interval = 1000                                      # How often to sample for time series
 # =============== Done with setting up arrays and initial conditions ===============
 
-t_0 = time.clock()  # For timing the computation loop
+t_0 = time.perf_counter()  # For timing the computation loop
 
 # ==================================================================================
 # ========================= Main time loop for simulation ==========================
@@ -254,7 +254,7 @@ while (time_step < max_time_step):
         eta_list.append(eta_n)
 
 # ============================= Main time loop done ================================
-print("Main computation loop done!\nExecution time: {:.2f} s".format(time.clock() - t_0))
+print("Main computation loop done!\nExecution time: {:.2f} s".format(time.perf_counter() - t_0))
 print("\nVisualizing results...")
 
 # ==================================================================================
